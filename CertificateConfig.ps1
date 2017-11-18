@@ -43,7 +43,7 @@ ForEach ($Certificate in $Config){
     Write-Host "Creating SSL certificate config file: " $FileName
     Set-Content $FilePath\$FileName -Force `
 "[CERT]
-NAME=$FQDN
+NAME=$FileName
 ORG=$ORG
 OU=$OU
 LOC=$LOCATION
