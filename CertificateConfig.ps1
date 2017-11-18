@@ -31,6 +31,7 @@ If (!(Test-Path $FilePath)){New-Item -ItemType Directory -Path $FilePath -Force}
 ## Loop through each line in the CSV file (which represents a different certificate)
 ForEach ($Certificate in $Config){
 	$Name = $Certificate.Name
+	$CertificateFileName = $Certificate.FileName
 	$FileName = $Certificate.FileName + $LocationName + ".txt"
 	$Domain = $Certificate.Domain
 	$IP = $Certificate.IPAddress
@@ -43,7 +44,7 @@ ForEach ($Certificate in $Config){
     Write-Host "Creating SSL certificate config file: " $FileName
     Set-Content $FilePath\$FileName -Force `
 "[CERT]
-NAME=$FileName
+NAME=$CertificateFileName
 ORG=$ORG
 OU=$OU
 LOC=$LOCATION
